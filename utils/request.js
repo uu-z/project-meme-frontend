@@ -4,7 +4,6 @@ import store from '../store';
 import { Message } from 'iview';
 
 axios.interceptors.request.use((config) => {
-	console.log(config);
 	if (config.method !== 'get') {
 		if(store.state.jwt) {
 			config.headers.Authorization = `Bearer ${store.state.jwt}`;

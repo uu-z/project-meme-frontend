@@ -7,6 +7,7 @@ import axios from 'axios';
 import iview from 'iview';
 import vueWaterfallEasy from './components/vue-waterfall-easy.vue';
 import uploader from 'vue-simple-uploader';
+import _ from "lodash"
 
 const { Button, Modal, BackTop, Tag, Input, Affix, Card, Form, FormItem, Notice, Message, Icon } = iview;
 
@@ -15,6 +16,7 @@ const Plugins = {
 };
 
 const Injects = {
+	_,
 	Notice,
 	Message
 };

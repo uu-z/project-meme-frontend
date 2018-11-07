@@ -3,9 +3,10 @@ import _ from 'lodash';
 import { imageServices, authServices } from '../services';
 import store2 from 'store2';
 import router from '../router';
+import config from "../config"
 
 const state = {
-	apiRoot: process.env.NODE_ENV == 'prod' ? 'https://api.yuyuko.me' : 'http://localhost:1337',
+	...config,
 	images: {
 		_sort: 'createdAt:desc',
 		_limit: 30,

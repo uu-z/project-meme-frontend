@@ -22,7 +22,7 @@
             Button(icon="md-search" @click="handleSearch" )
             Button(icon="md-add" @click="handleUpload")
     div.waterfall-box
-      vue-waterfall-easy(:maxCols="6" :imgWidth="180" :scrollStyle="{'padding-top': '100px'}" ref="waterfall" :imgsArr="images.list" srcKey="url" @scrollReachBottom="getImages" @click="clickFn")
+      vue-waterfall-easy(:maxCols="6" :imgWidth="180" :scrollStyle="{'padding-top': '100px'}" ref="waterfall" :imgsArr="images.list" srcKey="image.url" @scrollReachBottom="getImages" @click="clickFn")
         div.img-info(slot-scope="props") 
           p {{ props.value.tags? props.value.tags.join(",") : ""}}
 </template>
@@ -31,6 +31,7 @@
 import axios from 'axios';
 import store from '../store';
 import { mapObjs } from '../utils';
+import config from '../config';
 
 export default {
 	data() {
@@ -56,8 +57,8 @@ export default {
 	computed: {
 		uploadOptions() {
 			return {
-				target: `${store.state.apiRoot}/upload`,
-				fileParameterName: 'files',
+				target: `${store.state.apiRoot}/images`,
+				fileParameterName: 'image',
 				testChunks: false,
 				headers: {
 					Authorization: `Bearer ${store.state.jwt}`

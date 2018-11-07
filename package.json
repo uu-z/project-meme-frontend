@@ -3,9 +3,6 @@
     "start": "cross-env NODE_ENV=dev poi index.js",
     "build": "cross-env NODE_ENV=prod poi build index.js"
   },
-  "pre-commit": [
-    "build"
-  ],
   "dependencies": {
     "axios": "^0.18.0",
     "iview": "^3.1.4",

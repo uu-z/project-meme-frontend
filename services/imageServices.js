@@ -4,20 +4,14 @@ import store from "../store";
 export default {
   getFiles: ({params}) => {
     return request({
-      url: "upload/files",
+      url: "images",
       params
     });
-  },
-  upload: ()=> {
-    return request({
-      method: "POST",
-      url:"upload"
-    })
   },
   edit: ({id, data})=> {
     return request({
       method: "PUT",
-      url: `upload/${id}/edit`,
+      url: `images/${id}`,
       data
     })
   }
