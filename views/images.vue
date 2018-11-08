@@ -15,14 +15,14 @@
       Input(v-if="currentSelectImage.isAddTag" size="small" autofocus style="width: 60px" @on-change="e => {currentSelectImage.addTagText = e.target.value}" @on-enter="handleInputTag" @on-blur="handleInputTag")
     .toolbox(v-if="this.$refs.waterfall" :style="{color: 'red', width: waterfallWidth + 'px'}")
       Affix(:offset-top="0" )
-        Card
+        Card(:shadow="true")
           div(slot="title" :style="{display: 'flex', alignItems:'center'}")
             p 二次元表情包
             Input(v-model="search" clearable  @on-enter="handleSearch" @on-blur="handleSearch")
             Button(icon="md-search" @click="handleSearch" )
             Button(icon="md-add" @click="handleUpload")
     div.waterfall-box
-      vue-waterfall-easy(:maxCols="6" :imgWidth="180" :scrollStyle="{'padding-top': '100px'}" ref="waterfall" :imgsArr="images.list" srcKey="image.url" @scrollReachBottom="getImages" @click="clickFn")
+      vue-waterfall-easy(:maxCols="6" :imgWidth="180"  ref="waterfall" :imgsArr="images.list" srcKey="image.url" @scrollReachBottom="getImages" @click="clickFn")
         div.img-info(slot-scope="props") 
           p {{ props.value.tags? props.value.tags.join(",") : ""}}
 </template>
@@ -134,7 +134,11 @@ export default {
 <style lang="stylus">
 .toolbox {
 	margin: 0 auto;
+
 	// max-width: 1350px
+	.ivu-card-body {
+		display: none;
+	}
 }
 
 .search {
@@ -149,7 +153,7 @@ export default {
 	z-index: -1;
 
 	.vue-waterfall-easy-scroll {
-		padding-top: 100px;
+		padding-top: 60px;
 	}
 }
 
