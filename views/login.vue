@@ -16,57 +16,58 @@ l<template lang="pug">
 </template>
 
 <script>
-import axios from "axios";
-import store from "../store";
-import { mapObjs } from "../utils";
+import axios from 'axios';
+import store from '../store';
+import { mapObjs } from '../utils';
 
 export default {
-  data() {
-    return {
-      form: {
-        identifier: "",
-        password: ""
-      },
-      rule: {
-        identifier: [
-          {
-            required: true,
-            message: "请输入用户名/邮箱",
-            trigger: "blur"
-          }
-        ],
-        password: [
-          {
-            required: true,
-            message: "请输入密码",
-            trigger: "blur"
-          },
-        ]
-      }
-    };
-  },
-  methods: {
-    async handleLogin() {
-      this.$refs.form.validate(async valid => {
-        if (valid) {
-          const {identifier, password} = this.form
-          await store.dispatch("LOGIN", {
-            data:{
-              identifier,password
-            }
-          })
-        } else {
-          this.$Message.error("请输入正确的账号密码");
-        }
-      });
-    },
-    async handleSignUp() {
-      this.$Notice.warning({
-        title: "暂未开放注册",
-        desc: ""
-      });
-    }
-  }
+	data() {
+		return {
+			form: {
+				identifier: '',
+				password: ''
+			},
+			rule: {
+				identifier: [
+					{
+						required: true,
+						message: '请输入用户名/邮箱',
+						trigger: 'blur'
+					}
+				],
+				password: [
+					{
+						required: true,
+						message: '请输入密码',
+						trigger: 'blur'
+					}
+				]
+			}
+		};
+	},
+	methods: {
+		async handleLogin() {
+			this.$refs.form.validate(async (valid) => {
+				if (valid) {
+					const { identifier, password } = this.form;
+					await store.dispatch('LOGIN', {
+						data: {
+							identifier,
+							password
+						}
+					});
+				} else {
+					this.$Message.error('请输入正确的账号密码');
+				}
+			});
+		},
+		async handleSignUp() {
+			this.$Notice.warning({
+				title: '暂未开放注册',
+				desc: ''
+			});
+		}
+	}
 };
 </script>
 

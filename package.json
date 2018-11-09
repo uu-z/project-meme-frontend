@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "cross-env NODE_ENV=dev poi index.js",
+    "prod": "cross-env NODE_ENV=prod poi index.js",
     "build": "cross-env NODE_ENV=prod poi build index.js"
   },
   "dependencies": {

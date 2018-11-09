@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import store from "./store"
+import store from './store';
 export default {
-  created(){
-    store.dispatch("INIT_APP")
-  }
+	created() {
+		store.dispatch('INIT_APP');
+	}
 };
 </script>
 
@@ -20,5 +20,9 @@ export default {
 
 body {
   background: #f5f5f5;
+}
+
+.card-header {
+  padding: 8px 16px;
 }
 </style>
