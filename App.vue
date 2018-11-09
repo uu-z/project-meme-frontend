@@ -22,7 +22,7 @@ body {
   background: #f5f5f5;
 }
 
-.card-header {
+.ivu-card-head {
   padding: 8px 16px;
 }
 </style>
