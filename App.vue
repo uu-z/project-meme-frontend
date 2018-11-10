@@ -68,7 +68,7 @@ body {
 .ivu-card-head {
   padding: 8px 16px;
 }
-.ivu-btn-default{
+.ivu-btn-default, .ivu-btn-dashed, .ivu-btn-primary{
     background #21243a
     border-color #21243a
     color rgba(255,255,255,0.8)
@@ -119,6 +119,9 @@ body {
   }
   .ivu-select-dropdown {
     background #21243a
+  }
+  .ivu-modal-content{
+    background #32333c
   }
 
   ::-webkit-scrollbar {
