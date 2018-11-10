@@ -125,7 +125,7 @@
         :style="{padding: (isMobile ? mobileGap : gap)/2+'px', width: isMobile ? '' : colWidth+'px'}"
       )
         component.img-inner-box(
-          :is="isRouterLink  && linkRange=='card' ? 'router-link' : 'Card'",
+          :is="isRouterLink  && linkRange=='card' ? 'router-link' : 'a'",
           :padding=0
           :data-index="i",
           :to="linkRange=='card' ? v[hrefKey] : false")
