@@ -19,16 +19,16 @@
         Button(icon="md-search" @click="handleSearch" )
         Button(icon="md-add" @click="handleUpload")
     div.waterfall-box
-      vue-waterfall-easy(:maxCols="6" :imgWidth="180"  ref="waterfall" :imgsArr="images.list" srcKey="image.url" @scrollReachBottom="getImages" @click="clickFn")
+      vue-waterfall-easy(:maxCols="6" :imgWidth="200"  ref="waterfall" :imgsArr="images.list" srcKey="image.url" @scrollReachBottom="getImages" @click="clickFn")
         div.img-info(slot-scope="props") 
           p.tag-text {{ props.value.tags? props.value.tags.join(",") : ""}}
 </template>
 
 <script>
-import axios from 'axios';
-import store from '../store';
-import { mapObjs } from '../utils';
-import config from '../config';
+import axios from "axios";
+import store from "../store";
+import { mapObjs } from "../utils";
+import config from "../config";
 
 export default {
   data() {
@@ -39,11 +39,11 @@ export default {
       editModal: false,
       currentSelectImage: {
         tags: [],
-        addTagText: '',
+        addTagText: "",
         isAddTag: false
       },
       attrs: {
-        accept: 'image/*'
+        accept: "image/*"
       }
     };
   },
@@ -55,7 +55,7 @@ export default {
     uploadOptions() {
       return {
         target: `${store.state.apiRoot}/images`,
-        fileParameterName: 'image',
+        fileParameterName: "image",
         testChunks: false,
         headers: {
           Authorization: `Bearer ${store.state.jwt}`
@@ -65,7 +65,7 @@ export default {
     uploadUrl() {
       return `${store.state.apiRoot}/upload`;
     },
-    ...mapObjs(['images', 'jwt']),
+    ...mapObjs(["images", "jwt"]),
     waterfallWidth() {
       return this.$refs.waterfall.waterfallWidth;
     }
@@ -77,18 +77,18 @@ export default {
       if (search) {
         query.tags_contains = search;
       }
-      this.$router.replace({ path: 'images', query });
+      this.$router.replace({ path: "images", query });
     },
     async handleUpload() {
       if (!this.jwt) {
-        this.$router.push('login');
+        this.$router.push("login");
       } else {
         this.uploadModal = true;
       }
     },
     async onSubmitEdit() {
-      const data = _.pick(this.currentSelectImage, ['tags']);
-      await store.dispatch('EDIT_IMAGE', {
+      const data = _.pick(this.currentSelectImage, ["tags"]);
+      await store.dispatch("EDIT_IMAGE", {
         id: this.currentSelectImage.id,
         data
       });
@@ -110,13 +110,13 @@ export default {
       this.editModal = true;
     },
     async getImages(state) {
-      await store.dispatch('GET_IMAGES');
+      await store.dispatch("GET_IMAGES");
     },
     reload(tags) {},
     removeTags(index) {}
   },
   watch: {
-    '$route.query'(newval, oldval) {
+    "$route.query"(newval, oldval) {
       this.images = {
         list: [],
         _query: newval
@@ -131,8 +131,8 @@ export default {
 <style lang="stylus">
 .toolbox {
   margin: 0 auto;
-  max-width 500px
-  margin-top 10px
+  max-width: 500px;
+  margin-top: 10px;
 
   // max-width: 1350px
   .ivu-card-body {
@@ -143,7 +143,6 @@ export default {
 .search {
   display: flex;
 }
-
 
 .waterfall-box {
   position: absolute;
@@ -162,11 +161,12 @@ export default {
 }
 
 .img-info {
-  background #21243a
+  background: #21243a;
   padding: 10px;
   font-size: 12px;
+
   .tag-text {
-    color #6e8d92
+    color: #6e8d92;
   }
 }
 
